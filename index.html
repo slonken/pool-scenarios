@@ -1759,13 +1759,16 @@ if(typeof module !== 'undefined' && module.exports){
     var settled=allGamesFinal();
     var week=loadedWeek()||espnData.week;
     var button=$('syncGateBtn');
-    $('syncGateTitle').textContent=settled?'Week '+week+' · Final Results':'Live sync is temporarily down';
-    $('syncGateText').textContent=settled
-      ?'All Week '+week+' games are final. Week '+(week+1)+' scenarios will update when the games go live.'
-      :"ESPN live sync isn't working on the website right now due to a hosting platform issue. Scores on this page are refreshed automatically on game days — just reload the page for the latest. (The Sync ESPN button still works when you open this page in the Muse app.)";
-    button.textContent=settled?'View Results':'Sync ESPN scores';
-    button.dataset.action=settled?'dismiss':'sync';
-    $('viewGamesBtn').classList.toggle('hidden',settled);
+    if(!settled){
+      // GitHub Pages: auto-sync is on, no gate needed for live weeks.
+      $('syncGate').classList.add('hidden');
+      return;
+    }
+    $('syncGateTitle').textContent='Week '+week+' · Final Results';
+    $('syncGateText').textContent='All Week '+week+' games are final. Week '+(week+1)+' scenarios will update when the games go live.';
+    button.textContent='View Results';
+    button.dataset.action='dismiss';
+    $('viewGamesBtn').classList.toggle('hidden',true);
     $('useSnapshotBtn').classList.add('hidden');
     $('syncGateFeedback').textContent='';
   }
@@ -2121,6 +2124,16 @@ if(typeof module !== 'undefined' && module.exports){
   });
 
   refreshAll();
+  // GitHub Pages auto-sync: fetch ESPN on load, then every 60s while games are live.
+  // (No CSP restriction here, unlike the muse.ai host.)
+  function autoSyncTick(){
+    if(allGamesFinal()) return; // settled week: nothing to poll
+    syncEspnScores($('syncEspnBtn'),false);
+  }
+  // Initial sync shortly after load (lets first paint happen first).
+  setTimeout(autoSyncTick, 1500);
+  // Poll every 60 seconds during live game windows.
+  setInterval(autoSyncTick, 60000);
 })();
   </script>
 </body>
