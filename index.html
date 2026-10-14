@@ -1325,8 +1325,8 @@ if(typeof module !== 'undefined' && module.exports){
   var data = WEEK5;
   var ESPN_SYNC = {
     week: 5,
-    asOf: '2026-10-12T03:15:00Z',
-    asOfLabel: '11:15 PM',
+    asOf: '2026-10-13T04:00:00Z',
+    asOfLabel: 'Final',
     synced: true,
     finals: {
       0:{lock:0,score:'TB 24 – DAL 16 · Final'},
@@ -1340,16 +1340,16 @@ if(typeof module !== 'undefined' && module.exports){
       9:{lock:1,score:'CHI 7 – GB 31 · Final'},
       10:{lock:0,score:'DEN 23 – LAC 17 · Final'},
       11:{lock:0,score:'DET 45 – ARI 21 · Final'},
-      12:{lock:0,score:'SF 32 – SEA 29 · Final'}
+      12:{lock:0,score:'SF 32 – SEA 29 · Final'},
+      13:{lock:0,score:'BAL 30 – ATL 23 · Final/OT'},
+      14:{lock:0,score:'BUF 37 – LAR 34 · Final/OT'}
     },
     leaders: {
-      13:{lock:1,score:'BAL 15 – ATL 23 · 0:44 - 4th'}
     },
     ties: {
       8:{score:'NYG 27 – WAS 27 · Final/OT — Tie, 0 pts for all'}
     },
     scheduled: {
-      14:'BUF @ LAR · 10/12 - 8:15 PM EDT'
     },
     probabilities: {
       0:{home:0,source:'final'},
@@ -1365,10 +1365,10 @@ if(typeof module !== 'undefined' && module.exports){
       10:{home:0,source:'final'},
       11:{home:0,source:'final'},
       12:{home:0,source:'final'},
-      13:{home:0.5,source:'live'},
-      14:{home:0.6026540776031875,source:'spread'}
+      13:{home:0,source:'final'},
+      14:{home:0,source:'final'}
     },
-    liveOddsSummary:{total:1,live:1,fallback:0},
+    liveOddsSummary:{total:0,live:0,fallback:0},
     matchedCount:15
   };
   var espnData = ESPN_SYNC;
