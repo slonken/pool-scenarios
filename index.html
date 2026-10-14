@@ -944,7 +944,7 @@
     <div class="layout">
       <section class="section games-section" aria-labelledby="gamesTitle">
         <div class="section-head">
-          <div><h2 id="gamesTitle"><img class="football-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAsCAYAAADctB6FAAABwklEQVR4nO2a3W3DIBCAjyoTuJLbAfoWyR0g6kYZpxtFGaCR+tYB2kjNCvQJRDAHx9nYht73lB9j4NNxxgCAIMRQS1amtdacckqpxdpZrCJu56mUkjTrTUtLwJhTzuQbrSUBY6ocdmGOiONhz6rr/fyZXYYrJrsQVQS381SoknLFZF2cklFaAkZKTo4U0oUxEWtJwIjJoYhJXoDJ2JoIH0xMSspD7M9aZQDgbUwNe9RWqGANIkKEogWLlGCEtCQDINx2LFJGQlqTYaBKieYQ7Ea1QunLzv0y9J1+fXoEAICPn192xe6YdRtR+vccTD+HvtOX683mkx1WoKXIcEn1Kzlk/htWyNB3NsG8vTyv05oFcfvo9l0ixMMmk7kihPOqPhVuvjt9fdvPJrFKhHiIEA/0scvleNhXMQ/BsBHiTk7csdUqofwBIENmBDpkTFi2NmM1/TJTd587IZfrTW1tW6EU5l3NXxcZLZK0+voPQFsoGuWQ0ErSGpOtuaGumgWTamtScpYQoyvQNS8yA/BW3qOPXaxgDdHC3YaQjSr/mpzKZCszgGx2I8hxCIStzWxXOzATQo5URZBDdwRqOJYpCHH+ABbA7+d4t6XYAAAAAElFTkSuQmCC" alt=""> Games board</h2><p class="section-sub">Lock a winner, or sync ESPN; the loaded CBS week is matched automatically.</p><div class="live-tools" id="espnControls"><label class="live-toggle" for="liveLeaderToggle"><input id="liveLeaderToggle" type="checkbox"> Set synced leader as winner (live ESPN)</label><button class="sync-button" id="syncEspnBtn" type="button">Sync ESPN scores</button><span class="espn-sync" id="espnSyncStatus">ESPN Week 5 · synced · 11:15 PM</span><span class="espn-feedback" id="espnFeedback" role="status"></span></div><p class="impact-legend"><strong class="legend-gold">Gold %</strong> = chance to win or tie for 1st if that team wins. <strong class="legend-silver">Silver %</strong> = chance to finish 2nd or tie for 2nd if that team wins.</p></div>
+          <div><h2 id="gamesTitle"><img class="football-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAsCAYAAADctB6FAAABwklEQVR4nO2a3W3DIBCAjyoTuJLbAfoWyR0g6kYZpxtFGaCR+tYB2kjNCvQJRDAHx9nYht73lB9j4NNxxgCAIMRQS1amtdacckqpxdpZrCJu56mUkjTrTUtLwJhTzuQbrSUBY6ocdmGOiONhz6rr/fyZXYYrJrsQVQS381SoknLFZF2cklFaAkZKTo4U0oUxEWtJwIjJoYhJXoDJ2JoIH0xMSspD7M9aZQDgbUwNe9RWqGANIkKEogWLlGCEtCQDINx2LFJGQlqTYaBKieYQ7Ea1QunLzv0y9J1+fXoEAICPn192xe6YdRtR+vccTD+HvtOX683mkx1WoKXIcEn1Kzlk/htWyNB3NsG8vTyv05oFcfvo9l0ixMMmk7kihPOqPhVuvjt9fdvPJrFKhHiIEA/0scvleNhXMQ/BsBHiTk7csdUqofwBIENmBDpkTFi2NmM1/TJTd587IZfrTW1tW6EU5l3NXxcZLZK0+voPQFsoGuWQ0ErSGpOtuaGumgWTamtScpYQoyvQNS8yA/BW3qOPXaxgDdHC3YaQjSr/mpzKZCszgGx2I8hxCIStzWxXOzATQo5URZBDdwRqOJYpCHH+ABbA7+d4t6XYAAAAAElFTkSuQmCC" alt=""> Games board</h2><p class="section-sub">Lock a winner, or sync ESPN; the loaded CBS week is matched automatically.</p><div class="live-tools" id="espnControls"><label class="live-toggle" for="liveLeaderToggle"><input id="liveLeaderToggle" type="checkbox"> Set synced leader as winner (live ESPN)</label><!-- Sync ESPN button removed: auto-sync every 60s on GitHub Pages --><span class="espn-sync" id="espnSyncStatus">ESPN Week 5 · synced · 11:15 PM</span><span class="espn-feedback" id="espnFeedback" role="status"></span></div><p class="impact-legend"><strong class="legend-gold">Gold %</strong> = chance to win or tie for 1st if that team wins. <strong class="legend-silver">Silver %</strong> = chance to finish 2nd or tie for 2nd if that team wins.</p></div>
           <button class="text-btn" id="clearLocks" type="button">Clear all locks</button>
         </div>
         <div class="game-list" id="gameList"></div>
@@ -1377,6 +1377,15 @@ if(typeof module !== 'undefined' && module.exports){
   var manualLocks = data.games.map(function(){ return null; });
   var locks = [];
   var selectedIndex = -1;
+  // GitHub Pages: remember last chosen player via localStorage (works here, unlike the sandboxed muse.ai iframe).
+  try{
+    var savedPlayer=localStorage.getItem('poolPlayer');
+    if(savedPlayer){
+      for(var _pi=0;_pi<data.players.length;_pi++){
+        if(data.players[_pi].n===savedPlayer){selectedIndex=_pi;break;}
+      }
+    }
+  }catch(_e){}
   var calcToken = 0;
   var currentAnalysis = null;
   var activeScenarioCategory = null;
@@ -2048,8 +2057,7 @@ if(typeof module !== 'undefined' && module.exports){
     var button=sourceButton||$('syncEspnBtn');
     var feedbackEl=$('espnFeedback');
     var gateFeedback=$('syncGateFeedback');
-    button.disabled=true;
-    button.textContent='Syncing…';
+    if(button){button.disabled=true;button.textContent='Syncing…';}
     feedbackEl.className='espn-feedback';
     feedbackEl.textContent='Matching ESPN to the loaded CBS games…';
     if(fromGate) gateFeedback.textContent='Matching ESPN to the loaded CBS games…';
@@ -2065,8 +2073,7 @@ if(typeof module !== 'undefined' && module.exports){
       }
       return false;
     }).then(function(ok){
-      button.disabled=false;
-      button.textContent='Sync ESPN scores';
+      if(button){button.disabled=false;button.textContent='Sync ESPN scores';}
       return ok;
     });
   }
@@ -2104,6 +2111,10 @@ if(typeof module !== 'undefined' && module.exports){
 
   playerSelect.addEventListener('change',function(){
     selectedIndex=playerSelect.value===''?-1:Number(playerSelect.value);
+    try{
+      if(selectedIndex>=0&&data.players[selectedIndex]) localStorage.setItem('poolPlayer',data.players[selectedIndex].n);
+      else localStorage.removeItem('poolPlayer');
+    }catch(_e){}
     closeScenarioDetail();
     renderGames(); calculate();
   });
@@ -2128,7 +2139,7 @@ if(typeof module !== 'undefined' && module.exports){
   // (No CSP restriction here, unlike the muse.ai host.)
   function autoSyncTick(){
     if(allGamesFinal()) return; // settled week: nothing to poll
-    syncEspnScores($('syncEspnBtn'),false);
+    syncEspnScores(null,false);
   }
   // Initial sync shortly after load (lets first paint happen first).
   setTimeout(autoSyncTick, 1500);
