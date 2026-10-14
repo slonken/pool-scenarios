@@ -958,7 +958,7 @@
   </main>
   </div>
   <div class="toast hidden" id="toast" role="status"></div>
-  <div class="sync-gate" id="syncGate" role="dialog" aria-modal="true" aria-labelledby="syncGateTitle" aria-describedby="syncGateText">
+  <div class="sync-gate hidden" id="syncGate" role="dialog" aria-modal="true" aria-labelledby="syncGateTitle" aria-describedby="syncGateText">
     <div class="sync-gate-card">
       <h2 id="syncGateTitle">Live sync is temporarily down</h2>
       <p id="syncGateText">ESPN live sync isn't working on the website right now due to a hosting platform issue. Scores on this page are refreshed automatically on game days — just reload the page for the latest. (The Sync ESPN button still works when you open this page in the Muse app.)</p>
@@ -1770,9 +1770,11 @@ if(typeof module !== 'undefined' && module.exports){
     var button=$('syncGateBtn');
     if(!settled){
       // GitHub Pages: auto-sync is on, no gate needed for live weeks.
-      $('syncGate').classList.add('hidden');
+      // (Gate stays hidden by default.)
       return;
     }
+    // Settled week: show the Final Results modal.
+    $('syncGate').classList.remove('hidden');
     $('syncGateTitle').textContent='Week '+week+' · Final Results';
     $('syncGateText').textContent='All Week '+week+' games are final. Week '+(week+1)+' scenarios will update when the games go live.';
     button.textContent='View Results';
