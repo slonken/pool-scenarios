@@ -884,6 +884,14 @@
   </style>
 </head>
 <body>
+<div id="jsError" style="display:none;background:#ff0000;color:#fff;padding:10px;font-family:monospace;white-space:pre-wrap;"></div>
+<script>
+window.addEventListener('error', function(e) {
+  var el = document.getElementById('jsError');
+  el.style.display = 'block';
+  el.textContent = 'JS ERROR: ' + e.message + '\n at ' + e.filename + ':' + e.lineno + ':' + e.colno;
+});
+</script>
   <div class="app-viewport" id="appViewport">
   <header class="mast">
     <div class="mast-inner">
