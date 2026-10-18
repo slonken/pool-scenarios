@@ -1326,9 +1326,9 @@ if(typeof module !== 'undefined' && module.exports){
   var data = WEEK6;
   var ESPN_SYNC = {
     week: 6,
-    asOf: '2026-10-13T04:00:00Z',
-    asOfLabel: 'Final',
-    synced: true,
+    asOf: '2026-10-18T17:30:00Z',
+    asOfLabel: 'Oct 18',
+    synced: false,
     finals: {
       0:{lock:1,score:'SEA 14 – DEN 17 · Final/OT'},
       1:{lock:0,score:'HOU 34 – JAC 31 · Final'}
@@ -1336,29 +1336,15 @@ if(typeof module !== 'undefined' && module.exports){
     leaders: {
     },
     ties: {
-      8:{score:'NYG 27 – WAS 27 · Final/OT — Tie, 0 pts for all'}
     },
     scheduled: {
     },
     probabilities: {
-      0:{home:0,source:'final'},
-      1:{home:1,source:'final'},
-      2:{home:0,source:'final'},
-      3:{home:1,source:'final'},
-      4:{home:0,source:'final'},
-      5:{home:1,source:'final'},
-      6:{home:1,source:'final'},
-      7:{home:0,source:'final'},
-      8:{home:0.5,source:'final-tie'},
-      9:{home:1,source:'final'},
-      10:{home:0,source:'final'},
-      11:{home:0,source:'final'},
-      12:{home:0,source:'final'},
-      13:{home:0,source:'final'},
-      14:{home:0,source:'final'}
+      0:{home:1,source:'final'},
+      1:{home:0,source:'final'}
     },
     liveOddsSummary:{total:0,live:0,fallback:0},
-    matchedCount:15
+    matchedCount:2
   };
   var espnData = ESPN_SYNC;
   var earn = buildEarn(data.games, data.players);
