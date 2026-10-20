@@ -218,14 +218,14 @@
     .team-impact,.team-impact-secondary{position:static;display:inline-flex;align-items:center;justify-content:center;min-width:31px;height:19px;padding:0 4px;border:1px solid var(--gold);background:#050505;color:var(--gold);font-size:.65rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;box-shadow:none;white-space:nowrap}
     .team-impact:empty,.team-impact-secondary:empty{opacity:0}
     .team-impact-secondary{display:none;border-color:#c0c0c0;color:#c0c0c0}
-    .impact-legend .legend-break{display:none;}
-    @media (max-width:768px){
-      .impact-legend .legend-break{display:block;height:0;}
-    }
     .impact-legend{margin:9px 0 0;color:#ddd;font-size:.73rem;font-weight:700}
     .impact-legend .legend-gold,.impact-legend .legend-silver{display:inline-flex;align-items:center;justify-content:center;min-height:19px;padding:1px 5px;background:#050505;font-size:.65rem;font-weight:900;line-height:1;vertical-align:middle;white-space:nowrap}
     .impact-legend .legend-gold{border:1px solid var(--gold);color:var(--gold)}
     .impact-legend .legend-silver{border:1px solid #c0c0c0;color:#c0c0c0}
+    .impact-legend .legend-break{display:none;}
+    @media (max-width:768px){
+      .impact-legend .legend-break{display:block;height:0;}
+    }
     .seg.mid{border-color:#5d5d5d!important;color:#bbb;background:#151515;min-width:76px}
     .seg.user-choice:not(.active){box-shadow:0 0 0 2px var(--chosen)}
     .seg.pick-fail{box-shadow:0 0 0 2px var(--fail)}
@@ -888,7 +888,6 @@
   </style>
 </head>
 <body>
-
   <div class="app-viewport" id="appViewport">
   <header class="mast">
     <div class="mast-inner">
@@ -1319,7 +1318,7 @@ function grabPicksFromCBS(){
 
 /* Node export for testing; harmless in browsers. */
 if(typeof module !== 'undefined' && module.exports){
-  module.exports = {WEEK5:WEEK5, DEFAULT_PLAYER:DEFAULT_PLAYER, buildEarn:buildEarn,
+  module.exports = {WEEK6:WEEK6, DEFAULT_PLAYER:DEFAULT_PLAYER, buildEarn:buildEarn,
     scoresFor:scoresFor, analyze:analyze, parsePicks:parsePicks,
     grabPicksFromCBS:grabPicksFromCBS};
 }
@@ -1330,12 +1329,24 @@ if(typeof module !== 'undefined' && module.exports){
   var data = WEEK6;
   var ESPN_SYNC = {
     week: 6,
-    asOf: '2026-10-18T17:30:00Z',
-    asOfLabel: 'Oct 18',
-    synced: false,
+    asOf: '2026-10-20T04:00:00Z',
+    asOfLabel: 'Final',
+    synced: true,
     finals: {
       0:{lock:1,score:'SEA 14 – DEN 17 · Final/OT'},
-      1:{lock:0,score:'HOU 34 – JAC 31 · Final'}
+      1:{lock:0,score:'HOU 34 – JAC 31 · Final'},
+      2:{lock:0,score:'CHI 31 – ATL 23 · Final'},
+      3:{lock:1,score:'BAL 10 – CLE 13 · Final'},
+      4:{lock:0,score:'TEN 26 – IND 20 · Final'},
+      5:{lock:1,score:'NYJ 19 – NE 26 · Final'},
+      6:{lock:0,score:'NO 34 – NYG 27 · Final'},
+      7:{lock:0,score:'CAR 25 – PHI 14 · Final'},
+      8:{lock:0,score:'PIT 26 – TB 19 · Final/OT'},
+      9:{lock:0,score:'ARI 18 – LAR 16 · Final'},
+      10:{lock:1,score:'LAC 6 – KC 22 · Final'},
+      11:{lock:0,score:'BUF 33 – LV 30 · Final'},
+      12:{lock:1,score:'DAL 13 – GB 23 · Final'},
+      13:{lock:1,score:'WAS 17 – SF 23 · Final'}
     },
     leaders: {
     },
@@ -1345,10 +1356,22 @@ if(typeof module !== 'undefined' && module.exports){
     },
     probabilities: {
       0:{home:1,source:'final'},
-      1:{home:0,source:'final'}
+      1:{home:0,source:'final'},
+      2:{home:0,source:'final'},
+      3:{home:1,source:'final'},
+      4:{home:0,source:'final'},
+      5:{home:1,source:'final'},
+      6:{home:0,source:'final'},
+      7:{home:0,source:'final'},
+      8:{home:0,source:'final'},
+      9:{home:0,source:'final'},
+      10:{home:1,source:'final'},
+      11:{home:0,source:'final'},
+      12:{home:1,source:'final'},
+      13:{home:1,source:'final'}
     },
     liveOddsSummary:{total:0,live:0,fallback:0},
-    matchedCount:2
+    matchedCount:14
   };
   var espnData = ESPN_SYNC;
   var earn = buildEarn(data.games, data.players);
