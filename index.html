@@ -1570,7 +1570,7 @@ if(typeof module !== 'undefined' && module.exports){
       var isLiveAuto = liveLeadersEnabled&&isInProgress&&espnData.leaders[g].lock>=0&&manualLocks[g]===null;
       var winner = state === 0 ? gm[0] : state === 1 ? gm[1] : null;
       var pickState = !hasPlayer ? '' : isTie ? 'locked-lost' : !winner ? '' : winner === pk[0] ? 'locked-won' : 'locked-lost';
-      var statusBadge=isTie?'<span class="lock-badge final">FINAL/OT · TIE · 0 PTS</span>':isFinal?'<span class="lock-badge final">FINAL</span>':isLiveAuto?'<span class="lock-badge live">LIVE</span>':'';
+      var statusBadge=''; // FINAL/LIVE pill removed per user request — ESPN score line already shows status.
       var oddsMarker=isInProgress?'<span class="odds-source live" title="Win probability modeled from the synced score and game clock">score odds</span>':'';
       var scoreLine=scoreLineFor(g);
       function teamClass(team,side){
