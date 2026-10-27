@@ -989,8 +989,8 @@
  * ========================================================================== */
 
 /* ------------------------------- DATA ---------------------------------- */
-/* Week 7 picks for "Joe's NFL Confidence Pool XI", extracted from CBS Sports
- * on 2026-10-25. games[i] = [visitor, home]. Each pick = [team, confidence].
+/* Week 5 picks for "Joe's NFL Confidence Pool XI", extracted from CBS Sports
+ * on 2026-10-11. games[i] = [visitor, home]. Each pick = [team, confidence].
  * "N/P" = no pick (earns 0). tb = Monday-night total-points tiebreaker. */
 var WEEK7 = {
   label: "Week 7 \u00b7 pulled from CBS on Oct 25, 2026.",
@@ -1329,12 +1329,24 @@ if(typeof module !== 'undefined' && module.exports){
   var data = WEEK7;
   var ESPN_SYNC = {
     week: 7,
-    asOf: '2026-10-25T17:11:00Z',
-    asOfLabel: 'Oct 25, 1:11 PM',
-    synced: false,
+    asOf: '2026-10-27T03:50:00Z',
+    asOfLabel: 'Final',
+    synced: true,
     finals: {
-      0:{lock:1,score:'NE 24 \u2013 CHI 30 \u00b7 Final'},
-      1:{lock:0,score:'PIT 16 \u2013 NO 10 \u00b7 Final'}
+      0:{lock:1,score:'NE 24 – CHI 30 · Final'},
+      1:{lock:0,score:'PIT 16 – NO 10 · Final'},
+      2:{lock:1,score:'SF 20 – ATL 29 · Final'},
+      3:{lock:0,score:'CIN 35 – BAL 13 · Final'},
+      4:{lock:0,score:'TB 43 – CAR 13 · Final'},
+      5:{lock:0,score:'NYG 27 – HOU 21 · Final'},
+      6:{lock:1,score:'IND 10 – MIN 16 · Final'},
+      7:{lock:0,score:'MIA 28 – NYJ 25 · Final'},
+      8:{lock:0,score:'CLE 27 – TEN 24 · Final'},
+      9:{lock:0,score:'DEN 30 – ARI 16 · Final'},
+      10:{lock:1,score:'GB 17 – DET 20 · Final'},
+      11:{lock:0,score:'LAR 35 – LV 21 · Final'},
+      12:{lock:1,score:'KC 3 – SEA 20 · Final'},
+      13:{lock:0,score:'DAL 38 – PHI 21 · Final'}
     },
     leaders: {
     },
@@ -1343,9 +1355,23 @@ if(typeof module !== 'undefined' && module.exports){
     scheduled: {
     },
     probabilities: {
+      0:{home:1,source:'final'},
+      1:{home:0,source:'final'},
+      2:{home:1,source:'final'},
+      3:{home:0,source:'final'},
+      4:{home:0,source:'final'},
+      5:{home:0,source:'final'},
+      6:{home:1,source:'final'},
+      7:{home:0,source:'final'},
+      8:{home:0,source:'final'},
+      9:{home:0,source:'final'},
+      10:{home:1,source:'final'},
+      11:{home:0,source:'final'},
+      12:{home:1,source:'final'},
+      13:{home:0,source:'final'}
     },
     liveOddsSummary:{total:0,live:0,fallback:0},
-    matchedCount:2
+    matchedCount:14
   };
   var espnData = ESPN_SYNC;
   var earn = buildEarn(data.games, data.players);
