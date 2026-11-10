@@ -1329,12 +1329,25 @@ if(typeof module !== 'undefined' && module.exports){
   var data = WEEK9;
   var ESPN_SYNC = {
     week: 9,
-    asOf: '2026-11-08T18:15:00Z',
+    asOf: '2026-11-10T04:42:00Z',
     asOfLabel: 'Final',
-    synced: false,
+    synced: true,
     finals: {
-      0:{lock:0,score:'JAC 33 \u2013 BAL 10 \u00b7 Final'},
-      1:{lock:0,score:'CIN 34 \u2013 ATL 17 \u00b7 Final'}
+      0:{lock:0,score:'JAC 33 – BAL 10 · Final'},
+      1:{lock:0,score:'CIN 34 – ATL 17 · Final'},
+      2:{lock:0,score:'DEN 26 – CAR 21 · Final'},
+      3:{lock:0,score:'DAL 27 – IND 23 · Final'},
+      4:{lock:1,score:'NYJ 12 – KC 35 · Final'},
+      5:{lock:0,score:'DET 19 – MIA 9 · Final'},
+      6:{lock:1,score:'CLE 22 – NO 23 · Final'},
+      7:{lock:0,score:'NYG 19 – PHI 11 · Final'},
+      8:{lock:0,score:'LAR 20 – WAS 13 · Final'},
+      9:{lock:0,score:'HOU 44 – LAC 22 · Final'},
+      10:{lock:1,score:'LV 17 – SF 38 · Final'},
+      11:{lock:0,score:'GB 45 – NE 27 · Final'},
+      12:{lock:1,score:'ARI 3 – SEA 17 · Final'},
+      13:{lock:1,score:'TB 24 – CHI 27 · Final'},
+      14:{lock:0,score:'BUF 23 – MIN 6 · Final'}
     },
     leaders: {
     },
@@ -1344,10 +1357,23 @@ if(typeof module !== 'undefined' && module.exports){
     },
     probabilities: {
       0:{home:0,source:'final'},
-      1:{home:0,source:'final'}
+      1:{home:0,source:'final'},
+      2:{home:0,source:'final'},
+      3:{home:0,source:'final'},
+      4:{home:1,source:'final'},
+      5:{home:0,source:'final'},
+      6:{home:1,source:'final'},
+      7:{home:0,source:'final'},
+      8:{home:0,source:'final'},
+      9:{home:0,source:'final'},
+      10:{home:1,source:'final'},
+      11:{home:0,source:'final'},
+      12:{home:1,source:'final'},
+      13:{home:1,source:'final'},
+      14:{home:0,source:'final'}
     },
     liveOddsSummary:{total:0,live:0,fallback:0},
-    matchedCount:2
+    matchedCount:15
   };
   var espnData = ESPN_SYNC;
   var earn = buildEarn(data.games, data.players);
